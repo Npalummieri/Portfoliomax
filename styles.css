@@ -1,0 +1,222 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    /* width: 100%; */
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#particles-js{
+    height: 100%;
+    /* width: 100%; */
+    background: #ffffff;
+    position: fixed; /*Para que quede fijo en pantalla*/
+    z-index: -1;
+}
+
+#mainCont{
+    position: relative;
+    z-index: 1;
+}
+
+section{
+    padding: 30px auto;
+    margin: 50px auto;
+}
+
+#navList{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.nav-item{
+    transition: transform 0.2s ease-in;
+}
+.nav-item:hover{
+    transform: scale(1.2);
+    background-color: rgb(219, 229, 237);
+    filter: drop-shadow(2px 10px 5px black);
+}
+
+#nameMain{
+    animation: slideIn 1s ease-in-out ;
+}
+@keyframes slideIn{
+    0%{
+        left: 0;
+        margin-left: 10%;
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.hovbg{
+    width: 200px;
+    height: 100px;
+    border: 2px solid green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease;
+}
+
+.hovbg:hover{
+    background-color: green;
+}
+
+#gridProject{
+    max-width: 1600px;
+    border: 3px dotted black;
+    /* padding: 20px; */
+    /* width: 100%;
+    height: 100%; */
+}
+
+.item-grid{
+    border: 2px solid red;
+    margin: 0 30px;
+    background-color: violet;
+}
+
+.card{
+    box-shadow: 5px 5px 8px 5px black; 
+    
+}
+
+.card-title{
+    background-color: gray;
+}
+
+#projectSection .card:hover{
+    transition: 0.5s ease;
+    transform: scale(1.1); /*"Zoom"*/
+}
+
+.cardlink{
+    text-decoration: none;
+}
+
+.articlecard{
+    margin: 5px;
+    padding: 5px;
+    /* overflow: auto; */
+}
+
+.card.interest:hover{
+    transition: 0.75s ease;
+    background-color: rgb(227, 227, 226);
+}
+
+
+#contSumm{
+    
+}
+
+/* Tranisition / transform para el apuntunico */
+#summary{
+    display: block;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+#summary.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#pfp{
+    opacity: 0;
+    transform: translateX(200%); /*Entra por la derecha*/
+    /* animation: enterRight 1s ease; */
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+#pfp.visible{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Ejemplo para apuntunico
+@keyframes enterLeft{
+    0%{
+        position: relative;
+        margin-right: 100%;
+        opacity: 0;
+    }
+    50%{
+        position: relative;
+        margin-right: 50%;
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 1;
+    } */
+
+        @keyframes enterLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+    
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes enterRight {
+            0% {
+                transform: translateX(200%);
+                opacity: 0;
+            }
+    
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+
+/* .modal-dialog{
+    
+    background-color: green;
+}
+.modal-content.large{
+    background-color: red;
+} */
+.carousel-control-prev {
+    position: absolute;
+    transform: translateX(-100%);
+}
+
+.carousel-control-next {
+    position: absolute;
+    transform: translateX(100%);
+}
+
+#prevProj,#nextProj{
+    background-color: black;
+}
+
+.carousel-item{
+    padding: 20px;
+    /* background-color: aqua;
+    border: 5px solid red; */
+}
+#carouselProjectsInner
+{
+    /* background-color: violet; */
+    padding: 20px;
+}
+
+#bodymsg{
+    max-height: 300px;
+    overflow: auto;
+}
+/* .carousel-caption{
+    background-color: black;
+    filter: opacity(0.8);
+
+} */
