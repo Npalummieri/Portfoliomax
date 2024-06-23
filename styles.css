@@ -10,7 +10,6 @@ body {
     margin: 0;
     padding: 0;
     padding-top: 100px;
-    /* width: 100%; */
     height: 100vh;
     font-family: sans-serif;
     background-color: var(--lighterdark-color);
@@ -48,9 +47,7 @@ hr{
 }
 
 
-
 #mainNav {
-    /* background-color: #22577a; */
     background: url("image.png");
     position: fixed;
     width: 100%;
@@ -75,6 +72,12 @@ hr{
         border: 1px solid white;
         color: var(--secondary-color);
         }
+        .nav-item:hover{
+            a{
+                color: var(--primary-color);
+            }
+            background-color: var(--secondary-color);
+            }
 }
 section {
     padding: 30px auto;
@@ -129,26 +132,11 @@ color: var(--secondary-color);
     }
 }
 
-/* .hovbg {
-    width: 200px;
-    height: 100px;
-    color: white;
-    font-weight: bolder;
-    background-color: rgb(1, 51, 96);
-    border: 2px solid rgb(1, 51, 96);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.5s ease;
-} */
+
 
 #gridProject {
     position: relative;
     max-width: 1600px;
-    /* border: 3px dotted black; */
-    /* padding: 20px; */
-    /* width: 100%;
-    height: 100%; */
 }
 
 .item-grid {
@@ -158,16 +146,15 @@ color: var(--secondary-color);
 }
 
 #projectSection .card{
-    /* background-color: var(--primary-color); */
     background-color: rgb(12, 12, 12);
     box-shadow: 1px 2px  rgb(48, 48, 48);
     height: 600px;
     max-height: 600px;
-    /* filter: drop-shadow(5px 5px 5px rgb(254, 254, 254)); */
-    /* border: 5px var(--secondary-color) solid; */
 }
 
 #projectSection .card-img-top{
+    padding: 3px;
+    background-color: white;
     height: 400px;
     max-height: 400px;
 }
@@ -175,7 +162,7 @@ color: var(--secondary-color);
 .card-title {
     color: var(--secondary-color);
     font-family: Playfair Display;
-    background-color: rgb(35, 35, 35);
+    background-color: rgb(0, 21, 41);
     border-top: 1px  solid var(--secondary-color);
     border-bottom: 1px  solid var(--secondary-color);
     padding: 10px;
@@ -193,24 +180,32 @@ color: var(--secondary-color);
 }
 
 .articlecard {
-    /* margin: 5px;*/
     color: var(--secondary-color);
-    padding: 10px; 
-    /* overflow: auto; */
+    padding: 10px;
+    
 }
 
 .card.interest{
     background-color: rgb(12, 12, 12);
     box-shadow: 1px 2px  rgb(48, 48, 48);
+    border: 1px solid white;
 }
 
 .card.interest:hover {
     transition: 0.75s ease;
+    padding: 0px 20px;
+    border: 3px solid white;
     background-color: rgb(36, 36, 36);
     .card-title {
-        transition: 0.75s ease;
+        transition: 0.5s ease;
         background-color: rgb(0, 0, 0);
     }
+    
+}
+
+.card.interest::after{
+    content: "";
+    border: 3px red white;
 }
 
 
@@ -227,7 +222,6 @@ color: var(--secondary-color);
     opacity: 0;
     transform: translateX(-100%);
     transition: transform 1s ease-in-out, opacity 1s ease-in-out;
-    /* font-weight: bolder; */
     font-size: 1.3em;
 }
 
@@ -240,7 +234,6 @@ color: var(--secondary-color);
 #pfp {
     opacity: 0;
      transform: translateX(20%); /*Entra por la derecha*/
-    /* animation: enterRight 1s ease; */
     transition: transform 1s ease-in-out, opacity 1s ease-in-out;
     border: 2px solid var(--secondary-color);
 }
@@ -250,22 +243,6 @@ color: var(--secondary-color);
     opacity: 1;
     transform: translateX(0);
 }
-
-/* Ejemplo para apuntunico
-@keyframes enterLeft{
-    0%{
-        position: relative;
-        margin-right: 100%;
-        opacity: 0;
-    }
-    50%{
-        position: relative;
-        margin-right: 50%;
-        opacity: 0.5;
-    }
-    100%{
-        opacity: 1;
-    } */
 
 @keyframes enterLeft {
     0% {
@@ -293,9 +270,7 @@ color: var(--secondary-color);
 
 
 .modal {
-
     background-color: var(--primary-color);
-    /* opacity: 0.9; */
 }
 
 
@@ -317,10 +292,6 @@ color: var(--secondary-color);
     position: absolute;
     transform: translateX(50%);
 }
-
-/* #gridProject{
-    border: red 2px dotted;
-} */
 
 #prevProj,
 #nextProj {
@@ -360,35 +331,97 @@ color: var(--secondary-color);
     display: block;
 }
 
-/* .carousel-inner .active{
-    z-index: 2;
-    transition: ease 1s;
-} */
+
 
 .carousel-item {
     padding: 20px;
     transition: ease-in 0.5s;
-    /* background-color: aqua;
-    border: 5px solid red; */
+
 }
 
 #carouselProjectsInner {
-    /* background-color: violet; */
+
     padding: 20px;
 }
 
-
-#formcontact{
-    background-color: var(--primary-color);
+#containerInterest{
+    
 }
+
+.visibleTwo{
+    animation: fadeInAnimation ease 3s;
+    animation-fill-mode: forwards;
+}
+.visibleThree{
+    animation: fadeInAnimation 4s infinite;
+}
+
+
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.lighteffect{
+    text-transform: uppercase;
+    background-image: linear-gradient(
+      -225deg,
+      #ffffff 0%,
+      #c7c6c6 29%,
+      #737373 67%,
+      #525251 100%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: flex;
+    justify-content: center;
+        font-size: 3em;
+}
+
+h4.lighteffect{
+    font-size: 2em;
+}
+
+@keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
+#formcontact{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: bolder;
+}
+
+#formcontact input{
+    background-color: rgb(243, 243, 243);
+    border: 1px solid rgb(119, 118, 118);
+}
+
+#formcontact textarea{
+    background-color: rgb(243, 243, 243);
+    border: 1px solid rgb(119, 118, 118);
+}
+
 #bodymsg {
     max-height: 300px;
     overflow: auto;
 }
 
 .warning-input{
-    /* background-color: rgb(178, 70, 70); */
-    /* opacity: 0.9; */
     border: 3px red solid;
 }
 
@@ -397,15 +430,22 @@ color: var(--secondary-color);
 }
 
 #send{
-    color: var(--secondary-color);
+    color: var(--primary-color);
     background-color: rgb(249, 133, 0);
 }
 #send:hover{
-    color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
-/* .carousel-caption{
-    background-color: black;
-    filter: opacity(0.8);
+@media (min-width:576px) {
+    #formcontact{
+        width:50%;
+    }
+}
 
-} */
+@media (max-width:576px) {
+    #formcontact{
+        width: 100%;
+    }
+}
+

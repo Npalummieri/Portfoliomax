@@ -8,6 +8,19 @@
         });
     });
 
+    //Cerrar nav si se clickea fuera
+    document.addEventListener("click",(event) =>{
+            const navCollapse = document.getElementById('navCollapse');
+            const isNavbarClicked = navCollapse.contains(event.target); //Checkea si el click es dentro o fuera del navBar
+            const isToggleClicked = document.querySelector('.navbar-toggler').contains(event.target);//Checkea si el cocurrio dentro del boton
+
+            //Si no es en las 2 variables anteriores y la clase esta seteada en 'show' (se esta mostrando)
+            if (!isNavbarClicked && !isToggleClicked && navCollapse.classList.contains('show')) {
+                new bootstrap.Collapse(navCollapse).hide(); //cerramos
+            }
+    })
+
+    //Observer summary
     document.addEventListener('DOMContentLoaded', (event) => {
         const summary = document.getElementById('summary');
         const pfpSumm = document.getElementById('pfp');
@@ -18,17 +31,14 @@
                 if (entry.isIntersecting) {
                     console.log("soy el observer");
 
-                    // summary.style.display = "block";
-                    // pfpSumm.style.display = "block";
                     summary.classList.add('visible');
                     pfpSumm.classList.add('visible');
 
 
-                    // observer.unobserve(summaryCont);
+
                 } else {
                     console.log("soy el observer yendose");
-                    // summary.style.display = "none";
-                    // pfpSumm.style.display = "none";
+
                     summary.classList.remove('visible');
                     pfpSumm.classList.remove('visible');
 
@@ -44,47 +54,77 @@
         observer.observe(summaryCont);
     });
 
+    //Observer interest
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const interest = document.getElementById('interestSection');
+        const textInterest = document.getElementById('conTextInterest');
+        const cardInterest = document.getElementById('cardsInterest');
+
+        const callback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    interest.classList.add('visibleTwo');
+                    textInterest.classList.add('visibleTwo');
+                    cardInterest.classList.add('visibleTwo');
+
+                } else {
+                    interest.classList.remove('visibleTwo');
+                    textInterest.classList.remove('visibleTwo');
+                    cardInterest.classList.remove('visibleTwo');
+
+                }
+
+            });
+        }
+        const options = {
+            threshold: 0.2 //  callback se ejecute cuando al menos el 50% del elemento sea visible
+        };
+
+        const observer = new IntersectionObserver(callback, options);
+        observer.observe(interest);
+    });
+
     //Carousel proyectos
     const projectsCards = [{
             title: 'Liquidaciones',
             description: 'Automatización en calculo de reintegros para clientes, ahorrando tiempo y mejorando la precisión.',
-            image: 'liqui.jpg',
+            image: 'Images/liqui.jpg',
             numProyect: '1'
         },
         {
             title: 'Geolocalización',
             description: 'Crea mapas interactivos en Azure para analizar límites, coordenadas y otros detalles geográficos de manera intuitiva.',
-            image: 'geolocalizacion.jpg',
+            image: 'Images/locageo.jpeg',
             numProyect: '2'
         },
         {
             title: 'Escenarios de Cumplimiento',
             description: 'Carga de archivos personalizables y obtención de escenarios de cumplimiento de stock y días de inventario disponibles.',
-            image: 'planeacion.jpg',
+            image: 'Images/meeto.png',
             numProyect: '3'
         },
         {
             title: 'Monitoreo en tiempo real de ventas',
             description: 'Seguimiento en <i>real-time</i> de las ventas a nivel de cliente y producto, comparándolas con objetivos mensuales.',
-            image: 'monitventas.jpg',
+            image: 'Images/monitventas.jpg',
             numProyect: '4'
         },
         {
             title: 'Profit & Loss (<i>P&L</i>)',
             description: 'Muestreo y automatización de procesos de provisión y emisión, incluyendo gráficos y tablas para un análisis completo',
-            image: 'profloss.jpg',
+            image: 'Images/peiele.png',
             numProyect: '5'
         },
         {
             title: 'Motor de Recomendación',
             description: 'Sugerencias adaptadas al cliente según preferencias,agrupados por tipo y producto.',
-            image: 'motorbusqueda.jpg',
+            image: 'Images/motorbusqueda.jpg',
             numProyect: '6'
         },
         {
             title: 'Web Scraping',
             description: 'Extracción de metricas y datos de sitios web para facilitar analisis.',
-            image: 'webscrap.jpg',
+            image: 'Images/webscrap.webp',
             numProyect: '7'
         },
         // Agrega más proyectos según sea necesario
@@ -117,7 +157,7 @@
         <a href="#projectModal" class="cardlink" data-bs-toggle="modal" data-project="project${card.numProyect}" title ="">
             <div class="card border-rounded border-3 ">
                 <img src="${card.image}" alt="${card.title}" class="card-img-top img-fluid">
-                <div class="card-body">
+                <div class="card-body ">
                 <h4 class="card-title text-center">${card.title.toUpperCase()}</h4>
                 <p class="card-text articlecard">${card.description}</p>
                 </div>
@@ -141,7 +181,7 @@
         project1: {
             title: "Proyecto 1 - Automatización de cálculos de reintegros",
             slides: [{
-                    src: "liqui2.jpg",
+                    src: "Images/liqui2.jpg",
                     caption: "",
                     comment: "dashboard de Power BI que automatiza el cálculo de reintegros para cada cliente, ahorrando tiempo y mejorando la precisión."
                 }
@@ -150,7 +190,7 @@
         project2: {
             title: "Proyecto 2 - Geolocalización",
             slides: [{
-                    src: "geoloqui.jpg",
+                    src: "Images/geoloqui.jpg",
                     caption: "",
                     comment: "Visualización de datos geográficos en mapas interactivos: Crea mapas interactivos en Azure para analizar límites, coordenadas y otros detalles geográficos de manera intuitiva."
                 }
@@ -159,7 +199,7 @@
         project3: {
             title: "Proyecto 3 - IT (Escenarios de Cumplimiento)",
             slides: [{
-                    src: "cucum.png",
+                    src: "Images/cucum.png",
                     caption: "",
                     comment: "Optimización de inventario con escenarios personalizables: Implementa un dashboard que permite cargar archivos personalizables y obtener hasta 3 escenarios de cumplimiento de stock y días de inventario disponibles."
                 }
@@ -168,7 +208,7 @@
         project4: {
             title: "Proyecto 4 - Cuotas (Monitoreo en tiempo real de ventas)",
             slides: [{
-                    src: "ventascu.jpg",
+                    src: "Images/ventascu.jpg",
                     caption: "",
                     comment: " Análisis financiero completo: Crea un dashboard que muestra información contable y automatiza procesos de provisión y emisión, incluyendo gráficos y tablas para un análisis completo."
                 }
@@ -177,7 +217,7 @@
         project5: {
             title: "Proyecto 5 - PnL (Estado de Resultados)",
             slides: [{
-                    src: "p&l2.jpg",
+                    src: "Images/p&l2.jpg",
                     caption: "",
                     comment: " Desarrolla un dashboard que permite realizar un seguimiento en tiempo real de las ventas a nivel de cliente y producto, comparándolas con objetivos mensuales."
                 }
@@ -186,7 +226,7 @@
         project6: {
             title: "Proyecto 6 - Motor de Recomendación",
             slides: [{
-                    src: "motor2.png",
+                    src: "Images/motor2.png",
                     caption: "",
                     comment: " Recomendaciones personalizadas con algoritmo híbrido: Implementa un algoritmo híbrido que considera la segmentación por clientes y por productos para ofrecer sugerencias personalizadas y adaptadas a las preferencias de cada usuario."
                 }
@@ -195,7 +235,7 @@
         project7: {
             title: "Proyecto 7 - Web Scraping",
             slides: [{
-                    src: "webscraping2.jpg",
+                    src: "Images/webscraping2.jpg",
                     caption: "",
                     comment: "Recopilación de datos relevantes mediante scraping: Extrae métricas y datos relevantes de diferentes sitios web para enriquecer tus análisis."
                 }
